@@ -1,6 +1,8 @@
 package repository;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import main.DatabaseConnection;
 import model.Schedule;
@@ -12,24 +14,27 @@ public class ScheduleRepository extends MainRepository {
 
 	}
 
-	public Schedule getClubSchedule(int idClub) {
-		Schedule schedule = new Schedule();
+	public List<Schedule> getClubSchedule(int idClub) {
+		List<Schedule> scheduleList = new ArrayList<Schedule>();
 		try {
 			resultSet = statement
 					.executeQuery("Select * From ClubManager.schedule WHERE idClub = "
 							+ idClub + ";");
-			resultSet.next();
-
-			schedule.setIdClub(Integer.parseInt(resultSet.getString("idClub")));
-			schedule.setTime(resultSet.getString("time"));
-			schedule.setIdSchedule(Integer.parseInt(resultSet
-					.getString("idSchedule")));
+			while (resultSet.next()) {
+				Schedule schedule = new Schedule();
+				schedule.setIdClub(Integer.parseInt(resultSet
+						.getString("idClub")));
+				schedule.setTime(resultSet.getString("time"));
+				schedule.setIdSchedule(Integer.parseInt(resultSet
+						.getString("idSchedule")));
+				scheduleList.add(schedule);
+			}
 
 		} catch (SQLException e) {
 
 			System.out.println(e.getMessage());
 		}
-		return schedule;
+		return scheduleList;
 	}
 
 	public void addSchedule(Schedule schedule) {

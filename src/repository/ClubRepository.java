@@ -17,18 +17,17 @@ public class ClubRepository extends MainRepository {
 		Club club = new Club();
 		try {
 			resultSet = statement
-					.executeQuery("SELECT * FROM clubmanager.Club WHERE name = '"
-							+ name + "';");
+					.executeQuery("SELECT * FROM clubmanager.club WHERE name = '"+name+"';");
 			resultSet.next();
-
 			club.setIdClub(Integer.parseInt(resultSet.getString("idClub")));
 			club.setCategory(resultSet.getString("category"));
 			club.setName(resultSet.getString("name"));
 			club.setTeacher(resultSet.getString("teacher"));
 			club.setLocation(resultSet.getString("location"));
+			club.setDescription(resultSet.getString("description"));
 
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
 
 		return club;
@@ -38,8 +37,7 @@ public class ClubRepository extends MainRepository {
 		List<Club> clubList = new ArrayList<Club>();
 
 		try {
-			resultSet = statement
-					.executeQuery("SELECT * FROM clubmanager.Club WHERE teacher = '"
+			resultSet = statement.executeQuery("SELECT * FROM clubmanager.club WHERE teacher = '"
 							+ teacher + "';");
 			while (resultSet.next()) {
 				Club club = new Club();
@@ -62,7 +60,7 @@ public class ClubRepository extends MainRepository {
 
 		try {
 			resultSet = statement
-					.executeQuery("SELECT * FROM clubmanager.Club WHERE categoryr = '"
+					.executeQuery("SELECT * FROM clubmanager.club WHERE category = '"
 							+ category + "';");
 			while (resultSet.next()) {
 				Club club = new Club();
