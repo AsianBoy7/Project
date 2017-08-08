@@ -2,22 +2,17 @@ package model;
 
 public class Club {
 	private int idClub;
-	private int idCategory;
+	private String category;
 	private String name;
 	private String teacher;
 	private String location;
+	private String description;
 	
 	public int getIdClub() {
 		return idClub;
 	}
 	public void setIdClub(int idClub) {
 		this.idClub = idClub;
-	}
-	public int getIdCategory() {
-		return idCategory;
-	}
-	public void setIdCategory(int idCategory) {
-		this.idCategory = idCategory;
 	}
 	public String getName() {
 		return name;
@@ -36,6 +31,18 @@ public class Club {
 	}
 	public void setLocation(String location) {
 		this.location = location;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String string) {
+		this.category = string;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 	
