@@ -8,6 +8,7 @@ public class Club {
 	private String location;
 	private String description;
 	
+	
 	public int getIdClub() {
 		return idClub;
 	}
@@ -44,7 +45,9 @@ public class Club {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+	public String toString(){
+		return getName();
+	}
 	
 
 }

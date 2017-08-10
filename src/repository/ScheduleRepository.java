@@ -37,13 +37,15 @@ public class ScheduleRepository extends MainRepository {
 		return scheduleList;
 	}
 
-	public void addSchedule(Schedule schedule) {
+	public boolean addSchedule(Schedule schedule) {
 		try {
 			statement.executeUpdate("INSERT INTO schedule VALUES ("
 					+ schedule.getIdSchedule() + ", " + schedule.getIdClub()
 					+ ", '" + schedule.getTime() + "');");
+			return true;
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
+			return false;
 		}
 
 	}
